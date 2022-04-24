@@ -1,12 +1,36 @@
-# Sequelize, PostgreSQL, Node.js tutorial
+# Restaurant Apps
 
-Modified From: https://github.com/nedssoft/sequelize-with-postgres-tutorial
+Simple Restaurant Application
 
-# Usage
+# Overview
 
-- `git clone git@github.com:nedssoft/sequelize-with-postgres-tutorial.git && cd sequelize-with-postgres-tutorial`
-- `cp .env.example .env`
-- Create two Postgres databases one for test and the other for development and assign the values of the connection strings to `DEV_DATABASE_HOST` and `TEST_DATABASE_HOST`= respectively.
-- `npm install`
-- npm start
+This repo contains:<br/>
+Client: React Application that is bootstrapped with create-react-app template<br/>
+Server: Node.js server using Express.js, PostgreSQL, Sequelize ORM, JSON Web Tokens
 
+# Install
+
+To install Client, go to client directory run:
+
+### `npm install`
+
+To install Server, go to api directory, then:
+
+- copy file `env.example` to `.env`  
+- fill your configuration in file `.env`  
+
+run:
+### `npm install`
+### `npm run migrate`
+### `npm run seed`
+
+
+## Available Scripts
+
+Running client. In the client root directory, run:
+
+### `npm start`
+
+Running Server. Use separate terminal window, go to api directory, then run:
+
+### `npm start`
