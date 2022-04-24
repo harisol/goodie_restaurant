@@ -51,3 +51,13 @@ export const arrayToHtmlList = (array) => {
   return (array
     .map((val, i) => <li key={i}>{val}</li>))
 };
+
+/**
+ * will return like Sun Apr 24 2022 00:43:51 GMT+0700
+ */
+export const formatDate = (dateString) => {
+  const date = new Date(dateString).toString();
+  const splitted = date.split('(');
+
+  return splitted[0];
+}

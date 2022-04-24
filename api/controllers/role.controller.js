@@ -10,7 +10,7 @@ exports.listRole = (req, res) => {
         limit: limit || defaultLimit,
         offset: page ? (Number(page) - 1) * limit : 0,
     }).then((roles) => {
-        res.json({ roles });
+        res.status(200).json({ roles });
     }).catch((error) => {
         logicError(error, res);
     });

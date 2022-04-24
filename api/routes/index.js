@@ -20,7 +20,7 @@ router.post('/login', auth.login); // for logout, just detroy token in client st
 router.get('/role', adminOnly, roleController.listRole);
 router.post('/role', adminOnly, validateCreateRole(), isValid, roleController.createRole);
 
-router.get('/user', adminOnly, userController.listUser);
+router.get('/user', userController.listUser);
 router.post('/user', adminOnly, validateCreateUser(), isValid, userController.createUser);
 
 router.post('/outlet', adminOnly, validateCreateOutlet(), isValid, outletController.createOutlet);

@@ -1,15 +1,20 @@
 import { useContext } from "react";
-import { cookieKeyAuth } from "../utils/config";
+import { login } from "../services/auth.service";
 import { AuthContext } from "../utils/contexts";
-import { setCookie } from "../utils/helpers";
 
 const Login = () => {
   const { setAuthed } = useContext(AuthContext);
   const authUser = (e) => {
     e.preventDefault();
     const username = document.getElementById('floatingInput').value;
-    setCookie(cookieKeyAuth, username, 2);
-    setAuthed(true);
+
+    login(username).then(error => {
+      if (error) {
+        return alert(error);
+      }
+
+      setAuthed(true);
+    });
   }
 
   return (

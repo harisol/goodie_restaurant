@@ -18,7 +18,7 @@ exports.listOutlet = async (req, res) => {
                 limit,
                 offset
             }).then(outlets => {
-                res.json({ outlets })
+                res.status(200).json({ outlets })
             });
         } else {
             // list outlet belongs to this user
@@ -26,7 +26,7 @@ exports.listOutlet = async (req, res) => {
                 .listOutletOfUser(user.id, limit, offset)
                 .then((outlets) => {
                     const result = outlets.map(row => row.Outlet);
-                    res.json({ outlets: result });
+                    res.status(200).json({ outlets: result });
                 });
         }
     } catch (error) {

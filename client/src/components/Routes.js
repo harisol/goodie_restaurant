@@ -7,21 +7,28 @@ import {
 
 /* component */
 import Navigation from '../components/Navigation';
-import User from '../pages/User';
 import { AuthContext } from '../utils/contexts';
 import { useContext } from 'react';
-import { eraseCookie } from '../utils/helpers';
-import { cookieKeyAuth } from '../utils/config';
+import { getCookie } from '../utils/helpers';
+import { cookieKeyUsername } from '../utils/config';
+import User from '../pages/User';
+import Outlet from '../pages/Outlet';
+import Role from '../pages/Roles';
+import { logout } from '../services/auth.service';
+import NotFound from '../pages/NotFound';
 
 const Routes = () => {
   const { setAuthed } = useContext(AuthContext);
+  const userName = getCookie(cookieKeyUsername);
 
   const signOut = (e) => {
     e.preventDefault();
     if (!window.confirm('Are you sure?')) return;
 
-    eraseCookie(cookieKeyAuth);
-    setAuthed(false);
+    logout().then(r => {
+      setAuthed(false);
+      window.location = '/'
+    });
   }
 
   return (
@@ -45,7 +52,7 @@ const Routes = () => {
         <div className="navbar-nav">
           <div className="nav-item text-nowrap">
             <span className="px-3" style={{ color: '#fff' }}>
-              Hello, Haris
+              Hello, {userName}
             </span>
             <a className="nav-link px-3" href="/" onClick={signOut} style={{ display: 'inline' }}>
               Sign out
@@ -56,40 +63,26 @@ const Routes = () => {
       <div className="container-fluid">
         <div className="row">
           <Navigation />
-
           <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-              <h1 className="h2">Dashboard</h1>
-              <div className="btn-toolbar mb-2 mb-md-0">
-                <div className="btn-group me-2">
-                  <button
-                    type="button"
-                    className="btn btn-sm btn-outline-secondary"
-                  >
-                    Share
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-sm btn-outline-secondary"
-                  >
-                    Export
-                  </button>
-                </div>
-              </div>
-            </div>
             <Switch>
               {/**
                * this is default route and must be appended with 'exact' attributes,
                * otherwise all other routes will be considered as default routes
                */}
               <Route exact path="/">
-                <Redirect to="/user" />
+                <Redirect to="/outlet" />
+              </Route>
+              <Route path="/outlet">
+                <Outlet />
               </Route>
               <Route path="/user">
                 <User />
               </Route>
               <Route path="/role">
-                <User />
+                <Role />
+              </Route>
+              <Route exact path="*">
+                <NotFound />
               </Route>
               {/* <Route exact path={["/list-forum", "/forums"]} component={ForumList} /> */}
               {/* <Route path="/create-forum" render={(props) => <Forum {...props} myprops={'someValue'} />} /> */}

@@ -9,14 +9,12 @@
   min-height: calc(100vh - 40px);
 }
 
-ol, ul {
-  padding-left: 30px;
+.sidebar .nav-link {
+  color: #000;
 }
 
-li.category {
-  margin-top: 15px;
-  margin-left: -20px;
-  list-style: none;
+.sidebar .nav-link.active {
+  color: rgb(50, 169, 205);
   font-weight: bold;
 }
 
@@ -24,9 +22,3 @@ a {
   color: #146c43;
   text-decoration: none;
 }
-
-a.active {
-  color: yellowgreen;
-}
-
-

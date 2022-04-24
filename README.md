@@ -2,18 +2,22 @@
 
 Simple Restaurant web application. This repository consists 
 - Client: React Application that is bootstrapped with create-react-app template<br/>
-- Server: Node.js server using Express.js, PostgreSQL, Sequelize ORM, JSON Web Tokens
+- Server: Node.js server using Express.js, PostgreSQL, Sequelize ORM, JSON Web Tokens  
 
-## Install Client
-
-Go to `client` directory then run `npm install`
+Sucsessfully tested with Node.js v16.13.1
 
 ## Install Server  
 - go to `api` directory
 - copy file `env.example` to `.env`  
 - fill your configuration in file `.env`  
-- then run: `npm install`, `npm run migrate`, `npm run seed`  
+- run `npm install`  
+- run `npm run migrate` to import database schema    
+- run `npm run seed` to insert sample data to database  
 
+## Install Client  
+
+- Go to `client` directory then run `npm install`  
+- Set `proxy` in file `client/package.json` with your Server host to avoid CORS error when connecting your Server and Client. This `proxy` only has effect in development. In production, you must set `baseUrl` in `{project_root}/client/src/services/index.js`
 
 ## Running Client
 
@@ -21,4 +25,3 @@ On the `client` root directory, run `npm start`
 
 ## Running Server
 On the `api` directory, run `npm start`  
-

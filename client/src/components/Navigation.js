@@ -10,18 +10,18 @@ const Navigation = () => {
         <ul className="nav flex-column">
           <li className="nav-item">
             {/* NavLink will add 'active' class when selected. use Link instead for normal link */}
+            <NavLink to="/outlet" className={'nav-link'}>
+              🍔 Outlets
+            </NavLink>
+          </li>
+          <li className="nav-item">
             <NavLink to="/user" className={'nav-link'}>
               👦 Users
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink to="/outlets" className={'nav-link'}>
-              🍔 Outlets
-            </NavLink>
-          </li>
-          <li className="nav-item">
             <NavLink to="/role" className={'nav-link'}>
-              ⌚ Role
+              💻 Roles
             </NavLink>
           </li>
         </ul>
