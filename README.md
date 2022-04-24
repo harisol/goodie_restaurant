@@ -21,7 +21,7 @@ Sucsessfully tested with Node.js v16.13.1
 
 ## Running Client
 
-On the `client` root directory, run `npm start`
+On the `client` directory, run `npm start`
 
 ## Running Server
 On the `api` directory, run `npm start`  
